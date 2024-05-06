@@ -1,8 +1,8 @@
+package test.java;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import main.java.Main;
 
 import static org.junit.Assert.*;
 
