@@ -6,6 +6,6 @@
 Считается время, за которое программа выполнит над массивом чисел все 4 операции (max, min, mult, sum)
 ![Моя картинка](https://github.com/alex-bul/tphse2/blob/master/speed_result.jpg?raw=true)
 
-[Чат с оповещением о тестировании](https://t.me/navalnavalnaval)
+[Чат с оповещением о тестировании](https://t.me/+IBszd4PuLwUzYTcy)
 
 Бульбенков Александр Алексеевич, группа 233
