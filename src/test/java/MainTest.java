@@ -36,7 +36,7 @@ public class MainTest {
     public void mul() {
         int[] numbers = {1, 2, 3, 4, 5};
 
-        Assert.assertEquals(1220, Main._mult(numbers));
+        Assert.assertEquals(120, Main._mult(numbers));
     }
 
     // Тест на скорость
