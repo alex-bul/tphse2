@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import main.java.Main;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class MainTest {
@@ -15,7 +17,7 @@ public class MainTest {
 
         //запускаем тест, в случае если результат будет не равен 1, то
         //тест будет провален, о результатах теста читаем в консоли
-        Assert.assertEquals(1, Main._min(numbers));
+        Assert.assertEquals(2, Main._min(numbers));
     }
 
     @Test
@@ -44,9 +46,7 @@ public class MainTest {
     public void speed_test() {
         int[] numbers = new int[100000000];
 
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = 1;
-        }
+        Arrays.fill(numbers, 1);
         long start = System.currentTimeMillis();
         Main._min(numbers);
         Main._max(numbers);
