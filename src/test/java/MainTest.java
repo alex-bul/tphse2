@@ -17,7 +17,7 @@ public class MainTest {
 
         //запускаем тест, в случае если результат будет не равен 1, то
         //тест будет провален, о результатах теста читаем в консоли
-        Assert.assertEquals(2, Main._min(numbers));
+        Assert.assertEquals(1, Main._min(numbers));
     }
 
     @Test
