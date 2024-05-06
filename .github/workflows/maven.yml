@@ -48,7 +48,7 @@ jobs:
         echo "FAILED_TESTS=${FAILED_TESTS}" >> $GITHUB_ENV
 
     - name: Send Telegram message on failure
-      if: ${{ always() }
+      if: ${{ always() }}
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
