@@ -35,16 +35,14 @@ jobs:
 
     - name: Extract failed tests
       run: |
-        # Создаем переменную для хранения информации о проваленных тестах
         FAILED_TESTS=""
-        # Перебираем все XML файлы в директории с отчетами
         for file in target/surefire-reports/*.xml; do
-          # Используем xmllint для извлечения имен проваленных тестов
-          if grep -q '<failure' "$file"; then
-            FAILED_TESTS+="$(xmllint --xpath "//testcase[failure]/@name" "$file" | sed 's/name="\([^"]*\)"/\1\n/g') "
+          if grep -q '<failure' "$file" || grep -q '<error' "$file"; then
+            # Используем xmllint для получения имени теста и класса
+            FAILED_TESTS+=$(xmllint --xpath "string(//testcase[failure or error]/@classname)" "$file")":"
+            FAILED_TESTS+=$(xmllint --xpath "string(//testcase[failure or error]/@name)" "$file")" "
           fi
         done
-        # Сохраняем результаты в переменной окружения
         echo "FAILED_TESTS=${FAILED_TESTS}" >> $GITHUB_ENV
 
     - name: Send Telegram message on failure
