@@ -33,24 +33,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B clean test
 
-    - name: Extract failed tests
-      run: |
-        FAILED_TESTS=""
-        for file in target/surefire-reports/*.xml; do
-          if grep -q '<failure' "$file" || grep -q '<error' "$file"; then
-            # Используем xmllint для получения имени теста и класса
-            FAILED_TESTS+=$(xmllint --xpath "string(//testcase[failure or error]/@classname)" "$file")":"
-            FAILED_TESTS+=$(xmllint --xpath "string(//testcase[failure or error]/@name)" "$file")" "
-          fi
-        done
-        echo "FAILED_TESTS=${FAILED_TESTS}" >> $GITHUB_ENV
-
-    - name: Send Telegram message on failure
+    - name: Send Telegram message testing result
       if: ${{ always() }}
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          Тестирование завершилось со статусом ${{ job.status }}.
-          ${{ job.status == 'failure' && format('Следующие тесты провалены: {0}', env.FAILED_TESTS) || 'Все тесты пройдены успешно.' }}
+          Тестирование ${{ job.status == 'success' && 'успешно завершено ✅' || 'провалено ❌' }}.
