@@ -40,4 +40,4 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          ${{ job.status }}: Тестирование ${{ job.status == 'успешно завершено ✅' && 'провалено ❌' || 'failed' }}.
+          $Тестирование ${{ job.status == 'success' && 'успешно завершено ✅' || 'провалено ❌' }}.
