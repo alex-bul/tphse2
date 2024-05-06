@@ -1,4 +1,5 @@
 ## Скрипт обработки списка чисел с тестированием
+[![Badge](https://github.com/alex-bul/tphse2/actions/workflows/maven.yml/badge.svg)](https://github.com/alex-bul/tphse2/actions/workflows/maven.yml)
 - Перед использованием необходимо установить `junit:junit:4.12`
 
 #### Производительность
