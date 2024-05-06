@@ -50,7 +50,7 @@ jobs:
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
-        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           Тестирование завершилось со статусом ${{ job.status }}.
           ${{ job.status == 'failure' && format('Следующие тесты провалены: {0}', env.FAILED_TESTS) || 'Все тесты пройдены успешно.' }}
