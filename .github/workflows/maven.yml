@@ -55,7 +55,4 @@ jobs:
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         message: |
           Тестирование завершилось со статусом ${{ job.status }}.
-          ${{
-            job.status == 'failure' && ('Следующие тесты провалены: ' + env.FAILED_TESTS) ||
-            'Все тесты пройдены успешно.'
-          }}
+          ${{ job.status == 'failure' && format('Следующие тесты провалены: {0}', env.FAILED_TESTS) || 'Все тесты пройдены успешно.' }}
